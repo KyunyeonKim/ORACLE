@@ -8,7 +8,7 @@ SELECT employee_id , salary
     
 FROM employees order by salary;
 
---ì‚¬ì›í…Œì´ë¸”ì—ì„œ ì—…ë¬´ì½”ë“œì™€ ê¸‰ì—¬ ì¶œë ¥
+--?‚¬?›?…Œ?´ë¸”ì—?„œ ?—…ë¬´ì½”?“œ?? ê¸‰ì—¬ ì¶œë ¥
 SELECT
     job_id,salary
 FROM employees
@@ -33,4 +33,106 @@ SELECT commission_pct * salary FROM employees;
 
 select * from employees;
 
-select last_name,job_id,salary,decode(job_id,'IT_PROG',salary*1.1)AS"ì‹¤ìˆ˜ë ¹ì•¡"FROM employees;
+select first_name,job_id from employees;
+
+select last_name,job_id,salary,decode(job_id,'IT_PROG',salary*1.1)AS"?‹¤?ˆ˜? ¹?•¡"FROM employees;
+
+select SYSDATE from dual;
+
+select HIRE_DATE,ADD_MONTHS(HIRE_DATE,3)from employees where EMPLOYEE_ID = 100;
+
+select ADD_MONTHS('13/04/20',12)from dual;
+
+select sysdate,to_char(sysdate,'HH')from dual;
+
+select SYSDATE, TO_CHAR(SYSDATE, 'HH') from dual;
+
+ SELECT TO_NUMBER('100')+1 FROM dual;
+ 
+ select TO_DATE(sysdate, 'yy/mm/dd') FROM dual;
+ 
+  select TO_DATE('13-03-20', 'dd/mm/yy') FROM dual;
+  
+  --Àı´ë°ª Áï - ¶Ç´Â + ºÎÈ£¸¦ ¶¼¾î³½¼ö
+  select abs(-30) from dual;
+  --¿Ã¸²°ª
+  select ceil(11.001)from dual;
+  --³»¸²°ª
+  select floor(4.999)from dual;
+  
+   select cos(180*3.14/180) from dual;
+   
+   select sin(180*3.14/180)from dual;
+   
+   select tan(45*3.14/180)from dual;
+   
+   select MOD(11, 4) from dual;
+   
+   select count(first_name)from employees;
+   
+   select count(employee_id)from employees;
+   
+   select count(*)from employees;
+--nullÀº Á¦¿ÜµÊ   
+   select count(commission_pct) from employees;
+
+   
+   select sum(salary)from employees;
+   
+   select sum (commission_pct)from employees;
+   
+   --null°¹¼ö Á¦¿Ü
+   select avg(commission_pct)from employees;
+   
+   --null°ªÀ» 0À¸·Î ´ëÃ¼µÇ±â¶§¹®¿¡ °¹¼ö Æ÷ÇÔ
+   select avg(NVL(commission_pct,0))from employees;
+   
+   select MAX(salary) from employees;
+   
+   select MIN(salary) from employees;
+   
+   select avg(salary) , department_id from employees group by department_id;
+   
+   select round (avg(salary)),department_id from employees group by department_id having department_id is not null;
+   
+   --¿¬ºÀ 8000ÀÌ»óÀÎ »ç¿øµéÀÇ ºÎ¼­º° Æò±Õ¿¬ºÀÀÇ ¹İ¿Ã¸²°ªÀ» Ãâ·ÂÇÏ¶ó.
+   
+
+   
+SELECT department_id, ROUND(AVG(salary))
+FROM employees
+WHERE salary >= 8000
+GROUP BY department_id;
+
+SELECT department_id, ROUND(AVG(salary)) AS r
+FROM employees
+WHERE salary >= 8000
+GROUP BY department_id
+ORDER BY r ASC;
+
+select department_id, round(avg(salary)) as r 
+from employees 
+where salary >=8000
+group by department_id
+order by r asc;
+
+select department_id,round(avg(salary)) as r
+from employees
+where salary>=10000
+group by department_id
+order by department_id asc;
+
+select department_id , job_id,count(*)
+from employees
+group by department_id,job_id
+order by department_id,job_id desc;
+   
+
+  
+  
+
+
+
+
+
+

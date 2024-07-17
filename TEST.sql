@@ -1,5 +1,3 @@
-ALTER SESSION SET CURRENT_SCHEMA = HR;
-
 SELECT
     *
 FROM departments;
@@ -10,9 +8,29 @@ SELECT employee_id , salary
     
 FROM employees order by salary;
 
---»ç¿øÅ×ÀÌºí¿¡¼­ ¾÷¹«ÄÚµå¿Í ±Þ¿© Ãâ·Â
+--ì‚¬ì›í…Œì´ë¸”ì—ì„œ ì—…ë¬´ì½”ë“œì™€ ê¸‰ì—¬ ì¶œë ¥
 SELECT
     job_id,salary
 FROM employees
 ORDER BY job_id DESC, salary desc;
 
+select EMPLOYEE_ID, SALARY from employees; 
+select EMPLOYEE_ID, SALARY from employees order by SALARY; 
+select EMPLOYEE_ID, SALARY from employees order by SALARY asc; 
+select EMPLOYEE_ID, SALARY from employees order by SALARY desc; 
+select JOB_ID, SALARY from employees order by JOB_ID, SALARY; 
+select JOB_ID, SALARY from employees order by JOB_ID asc, SALARY asc; 
+select JOB_ID, SALARY from employees order by JOB_ID, SALARY desc; 
+select JOB_ID, SALARY from employees order by JOB_ID desc, SA
+
+SELECT EMPLOYEE_ID,SALARY FROM EMPLOYEES
+WHERE SALARY>=20000 OR SALARY <=2100
+UNION
+SELECT EMPLOYEE_ID,SALARY FROM EMPLOYEES
+WHERE SALARY<=2200;
+
+SELECT commission_pct * salary FROM employees;
+
+select * from employees;
+
+select last_name,job_id,salary,decode(job_id,'IT_PROG',salary*1.1)AS"ì‹¤ìˆ˜ë ¹ì•¡"FROM employees;

@@ -127,6 +127,36 @@ from employees
 group by department_id,job_id
 order by department_id,job_id desc;
    
+   
+ --  john이 속해있는 부서의 모든 사람의 부서번호 , 사원아이디 ,이름 입사일,급여를 출력해라
+ select employee_id, first_name ||''|| last_name,
+ department_id, hire_date , salary
+ from employees;
+ 
+ 
+ --7-1 전체 사원의 평균 임금보다 많은 사원의 사원번호,이름,부서명,입사일 급여를 출력해라
+SELECT e.employee_id, e.first_name, e.last_name, d.department_name, e.hire_date, e.salary
+FROM employees e
+JOIN departments d ON e.department_id = d.department_id
+WHERE e.salary > (
+    SELECT AVG(salary) 
+    FROM employees
+);
+ 
+ 
+ --7-2 전체 사원의 평균임금보다 많은 사원의 사원번호, 이름,부서명 입사일 지역명 급여를  출력해라
+ SELECT e.employee_id, e.first_name, e.last_name, d.department_name, e.hire_date, l.city, e.salary
+FROM employees e
+JOIN departments d ON e.department_id = d.department_id
+JOIN locations l ON d.location_id = l.location_id
+WHERE e.salary > (
+    SELECT AVG(salary) 
+    FROM employees
+);
+
+ 
+ 
+   
 
   
   

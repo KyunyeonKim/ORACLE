@@ -515,6 +515,140 @@ select * from major;
 
 
 
+-- 학교 테이블 생성
+CREATE TABLE school (
+    sch_num NUMBER PRIMARY KEY,
+    sch_name VARCHAR2(20),
+    sch_adr VARCHAR2(20),
+    sch_phonenumber NUMBER,
+    sch_date DATE
+);
+
+-- 학교 데이터 삽입
+INSERT INTO school (sch_num, sch_name, sch_adr, sch_phonenumber, sch_date)
+VALUES (1, '서울고', '서울', 02, TO_DATE('2023-01-15', 'YYYY-MM-DD'));
+INSERT INTO school (sch_num, sch_name, sch_adr, sch_phonenumber, sch_date)
+VALUES (2, '부산고', '부산', 051, TO_DATE('2023-01-15', 'YYYY-MM-DD'));
+INSERT INTO school (sch_num, sch_name, sch_adr, sch_phonenumber, sch_date)
+VALUES (3, '대구고', '대구', 054, TO_DATE('2023-01-15', 'YYYY-MM-DD'));
+INSERT INTO school (sch_num, sch_name, sch_adr, sch_phonenumber, sch_date)
+VALUES (4, '인천고', '인천', 051, TO_DATE('2023-01-15', 'YYYY-MM-DD'));
+INSERT INTO school (sch_num, sch_name, sch_adr, sch_phonenumber, sch_date)
+VALUES (5, '경북고', '경북', 054, TO_DATE('2023-01-15', 'YYYY-MM-DD'));
+INSERT INTO school (sch_num, sch_name, sch_adr, sch_phonenumber, sch_date)
+VALUES (6, '광주고', '광주', 062, TO_DATE('2023-01-15', 'YYYY-MM-DD'));
+INSERT INTO school (sch_num, sch_name, sch_adr, sch_phonenumber, sch_date)
+VALUES (7, '대전고', '대전', 042, TO_DATE('2023-01-15', 'YYYY-MM-DD'));
+INSERT INTO school (sch_num, sch_name, sch_adr, sch_phonenumber, sch_date)
+VALUES (8, '울산고', '울산', 052, TO_DATE('2023-01-15', 'YYYY-MM-DD'));
+INSERT INTO school (sch_num, sch_name, sch_adr, sch_phonenumber, sch_date)
+VALUES (9, '세종고', '세종', 044, TO_DATE('2023-01-15', 'YYYY-MM-DD'));
+INSERT INTO school (sch_num, sch_name, sch_adr, sch_phonenumber, sch_date)
+VALUES (10, '강원고', '강원', 033, TO_DATE('2023-01-15', 'YYYY-MM-DD'));
+
+-- 학과 테이블 생성 (학교 참조)
+CREATE TABLE department(
+    dep_num NUMBER PRIMARY KEY,
+    sch_num NUMBER REFERENCES school(sch_num),
+    dep_name VARCHAR2(20),
+    dep_phonenumber NUMBER,
+    dep_date DATE
+);
+
+-- 학과 데이터 삽입
+INSERT INTO department (dep_num, sch_num, dep_name, dep_phonenumber, dep_date)
+VALUES (1, 1, '동물학부', 01012345678, TO_DATE('2023-01-15', 'YYYY-MM-DD'));
+INSERT INTO department (dep_num, sch_num, dep_name, dep_phonenumber, dep_date)
+VALUES (2, 1, '심리학부', 01012345678, TO_DATE('2023-01-15', 'YYYY-MM-DD'));
+INSERT INTO department (dep_num, sch_num, dep_name, dep_phonenumber, dep_date)
+VALUES (3, 3, '컴퓨터학부', 01012345678, TO_DATE('2023-01-15', 'YYYY-MM-DD'));
+INSERT INTO department (dep_num, sch_num, dep_name, dep_phonenumber, dep_date)
+VALUES (4, 4, '생물학부', 01012345678, TO_DATE('2023-01-15', 'YYYY-MM-DD'));
+INSERT INTO department (dep_num, sch_num, dep_name, dep_phonenumber, dep_date)
+VALUES (5, 5, '화학학부', 01012345678, TO_DATE('2023-01-15', 'YYYY-MM-DD'));
+INSERT INTO department (dep_num, sch_num, dep_name, dep_phonenumber, dep_date)
+VALUES (6, 1, '전자학부', 01012345678, TO_DATE('2023-01-15', 'YYYY-MM-DD'));
+INSERT INTO department (dep_num, sch_num, dep_name, dep_phonenumber, dep_date)
+VALUES (7, 1, '수학학부', 01012345678, TO_DATE('2023-01-15', 'YYYY-MM-DD'));
+INSERT INTO department (dep_num, sch_num, dep_name, dep_phonenumber, dep_date)
+VALUES (8, 1, '영어학부', 01012345678, TO_DATE('2023-01-15', 'YYYY-MM-DD'));
+INSERT INTO department (dep_num, sch_num, dep_name, dep_phonenumber, dep_date)
+VALUES (9, 1, '통계학부', 01012345678, TO_DATE('2023-01-15', 'YYYY-MM-DD'));
+INSERT INTO department (dep_num, sch_num, dep_name, dep_phonenumber, dep_date)
+VALUES (10, 5, '회계학부', 01012345678, TO_DATE('2023-01-15', 'YYYY-MM-DD'));
+
+-- 전공 테이블 생성 (학교 참조)
+CREATE TABLE major (
+    maj_num NUMBER PRIMARY KEY,
+    sch_num NUMBER REFERENCES school(sch_num),
+    maj_name VARCHAR2(20),
+    maj_phonenumber NUMBER,
+    maj_date DATE
+);
+
+-- 전공 데이터 삽입
+INSERT INTO major (maj_num, sch_num, maj_name, maj_phonenumber, maj_date)
+VALUES (1, 1, '영어학과', 01012345678, TO_DATE('2023-01-15', 'YYYY-MM-DD'));
+INSERT INTO major (maj_num, sch_num, maj_name, maj_phonenumber, maj_date)
+VALUES (2, 3, '심리학과', 01012345678, TO_DATE('2023-01-15', 'YYYY-MM-DD'));
+INSERT INTO major (maj_num, sch_num, maj_name, maj_phonenumber, maj_date)
+VALUES (3, 4, '자동차학과', 01012345678, TO_DATE('2023-01-15', 'YYYY-MM-DD'));
+INSERT INTO major (maj_num, sch_num, maj_name, maj_phonenumber, maj_date)
+VALUES (4, 6, '상담학과', 01012345678, TO_DATE('2023-01-15', 'YYYY-MM-DD'));
+INSERT INTO major (maj_num, sch_num, maj_name, maj_phonenumber, maj_date)
+VALUES (5, 4, '컴퓨터학과', 01012345678, TO_DATE('2023-01-15', 'YYYY-MM-DD'));
+INSERT INTO major (maj_num, sch_num, maj_name, maj_phonenumber, maj_date)
+VALUES (6, 5, '수학학과', 01012345678, TO_DATE('2023-01-15', 'YYYY-MM-DD'));
+INSERT INTO major (maj_num, sch_num, maj_name, maj_phonenumber, maj_date)
+VALUES (7, 2, '통계학과', 01012345678, TO_DATE('2023-01-15', 'YYYY-MM-DD'));
+INSERT INTO major (maj_num, sch_num, maj_name, maj_phonenumber, maj_date)
+VALUES (8, 3, '상경학과', 01012345678, TO_DATE('2023-01-15', 'YYYY-MM-DD'));
+INSERT INTO major (maj_num, sch_num, maj_name, maj_phonenumber, maj_date)
+VALUES (9, 2, '불교학과', 01012345678, TO_DATE('2023-01-15', 'YYYY-MM-DD'));
+INSERT INTO major (maj_num, sch_num, maj_name, maj_phonenumber, maj_date)
+VALUES (10, 8, '심리학과', 01012345678, TO_DATE('2023-01-15', 'YYYY-MM-DD'));
+
+-- 학생 테이블 생성 (학교 및 전공 참조)
+CREATE TABLE student (
+    stu_num NUMBER PRIMARY KEY,
+    sch_num NUMBER REFERENCES school(sch_num),
+    maj_num NUMBER REFERENCES major(maj_num),
+    stu_name VARCHAR2(20),
+    stu_phonenumber NUMBER
+);
+
+-- 학생 데이터 삽입
+INSERT INTO student (stu_num, sch_num, maj_num, stu_name, stu_phonenumber)
+VALUES (1, 1, 2, '김철수', 01012345678);
+INSERT INTO student (stu_num, sch_num, maj_num, stu_name, stu_phonenumber)
+VALUES (2, 1, 3, '김주먹', 01023456789);
+INSERT INTO student (stu_num, sch_num, maj_num, stu_name, stu_phonenumber)
+VALUES (3, 2, 4, '김바위', 01034567890);
+INSERT INTO student (stu_num, sch_num, maj_num, stu_name, stu_phonenumber)
+VALUES (4, 2, 1, '김가위', 01045678901);
+INSERT INTO student (stu_num, sch_num, maj_num, stu_name, stu_phonenumber)
+VALUES (5, 3, 2, '장동건', 01056789012);
+INSERT INTO student (stu_num, sch_num, maj_num, stu_name, stu_phonenumber)
+VALUES (6, 3, 3, '김동건', 01067890123);
+INSERT INTO student (stu_num, sch_num, maj_num, stu_name, stu_phonenumber)
+VALUES (7, 4, 3, '박동건', 01078901234);
+INSERT INTO student (stu_num, sch_num, maj_num, stu_name, stu_phonenumber)
+VALUES (8, 4, 2, '이동건', 01089012345);
+INSERT INTO student (stu_num, sch_num, maj_num, stu_name, stu_phonenumber)
+VALUES (9, 5, 4, '김하나', 01090123456);
+INSERT INTO student (stu_num, sch_num, maj_num, stu_name, stu_phonenumber)
+VALUES (10, 5, 1, '이하나', 01001234567);
+
+-- 테이블 출력
+SELECT * FROM school;
+SELECT * FROM department;
+SELECT * FROM major;
+SELECT * FROM student;
+
+
+
+
+
 
 
 
